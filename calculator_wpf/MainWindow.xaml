@@ -1,0 +1,42 @@
+﻿<Window x:Class="calculator_wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:calculator_wpf"
+        mc:Ignorable="d"
+        Title="Calculator" Height="400" Width="430" KeyDown="Window_KeyDown" ResizeMode="NoResize" MouseRightButtonDown="Window_MouseRightButtonDown" Icon="asstes/hourglass.png">
+    <Grid Margin="0" KeyDown="Grid_KeyDown" Width="424">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="resultBox" TextWrapping="Wrap" Margin="10,10,0,275" FontSize="40" Text="0" IsReadOnly="True" IsReadOnlyCaretVisible="True" HorizontalAlignment="Left" Width="404" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Visible" BorderBrush="#89000000"/>
+        <Button x:Name="num7" Style="{StaticResource MaterialDesignFlatButton}" Content="7" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,136,0,168" Height="56" FontSize="40" Click="num7_Click" Background="White" BorderBrush="#FFF0F0F0" Foreground="Black"/>
+        <Button x:Name="num8" Style="{StaticResource MaterialDesignFlatButton}" Content="8" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="88,136,0,168" Height="56" FontSize="40" Click="num8_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+        <Button x:Name="num9" Style="{StaticResource MaterialDesignFlatButton}" Content="9" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="176,0,0,168" Height="56" FontSize="40" Click="num9_Click" BorderBrush="#FF7F7F89" Background="White" Foreground="Black"/>
+        <Button x:Name="pi" Style="{StaticResource MaterialDesignFlatButton}" Content="π" Margin="264,136,0,168" Height="56" VerticalAlignment="Bottom" FontSize="40" BorderBrush="#FFDDDDDD" Click="nn_Click" HorizontalAlignment="Left" Width="80" Background="#FF3AB767" Foreground="Black"/>
+        <Button x:Name="divideBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="÷" Margin="344,136,0,168" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="divideBtn_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Background="#FF3AB767" Foreground="Black"/>
+        <Button x:Name="num4" Style="{StaticResource MaterialDesignFlatButton}" Content="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,192,0,112" Height="56" FontSize="40" Click="num4_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+        <Button x:Name="num5" Style="{StaticResource MaterialDesignFlatButton}" Content="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="88,192,0,112" Height="56" FontSize="40" Click="num5_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+        <Button x:Name="num6"  Style="{StaticResource MaterialDesignFlatButton}" Content="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="176,192,0,112" Height="56" FontSize="40" Click="num6_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+        <Button x:Name="per" Style="{StaticResource MaterialDesignFlatButton}" Content="%" VerticalAlignment="Bottom" Margin="264,192,0,112" Height="56" FontSize="40" BorderBrush="#FFDDDDDD" Click="per_Click" HorizontalAlignment="Left" Width="80" Background="#FF3AB767" Foreground="Black"/>
+        <Button x:Name="multiplyBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="×" Margin="344,192,0,112" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="multiplyBtn_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Background="#FF3AB767" Foreground="Black"/>
+        <Button x:Name="num1" Style="{StaticResource MaterialDesignFlatButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,248,0,56" Height="56" FontSize="40" Click="num1_Click_1" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+        <Button x:Name="num2" Style="{StaticResource MaterialDesignFlatButton}" Content="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="88,248,0,56" Height="56" FontSize="40" Click="num2_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+        <Button x:Name="num3" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="176,248,0,56" Height="56" FontSize="40" Click="num3_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black" Content="3"/>
+        <Button x:Name="minusBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="-" Margin="264,248,0,56" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="minusBtn_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Background="#FF3AB767" Foreground="Black"/>
+        <Button x:Name="dot" Style="{StaticResource MaterialDesignFlatButton}" Content="." HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,304,0,0" Height="56" FontSize="40" BorderBrush="#FFF0F0F0" Click="dot_Click" Background="White" Foreground="Black"/>
+        <Button x:Name="num0" Style="{StaticResource MaterialDesignFlatButton}" Content="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="176" Margin="88,304,0,0" Height="56" FontSize="40" Click="num0_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+        <Button x:Name="equals" Style="{StaticResource MaterialDesignFlatButton}" Content="=" Margin="344,0,0,0" FontSize="40" Click="equals_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Height="112" VerticalAlignment="Bottom" Background="#FF3AB767" Foreground="Black"/>
+        <Button x:Name="plusBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="+" Margin="264,304,0,0" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="plusBtn_Click" HorizontalAlignment="Left" Width="80" BorderBrush="#FFDDDDDD" Background="#FF3AB767" Foreground="Black"/>
+        <Button x:Name="clear" Style="{StaticResource MaterialDesignFlatButton}" Content="C" VerticalAlignment="Bottom" Margin="264,106,0,224" Height="30" FontSize="20" BorderBrush="Gray" Click="clear_Click" HorizontalAlignment="Left" Width="80" Background="White" Foreground="Black"/>
+        <Button x:Name="backSpace" Style="{StaticResource MaterialDesignFlatButton}" Content="Back" VerticalAlignment="Bottom" Margin="344,106,0,224" Height="30" BorderBrush="{x:Null}" Foreground="Black" Click="backSpace_Click" HorizontalAlignment="Left" Width="80" Background="White"/>
+        <Button x:Name="exit" Style="{StaticResource MaterialDesignFlatButton}" Content="Exit" VerticalAlignment="Bottom" Margin="0,106,0,224" Height="30" FontSize="20" BorderBrush="{x:Null}" Click="exit_Click" HorizontalAlignment="Left" Width="88" Background="White" Foreground="Black"/>
+        <Button x:Name="pn" Style="{StaticResource MaterialDesignFlatButton}" Content="+/-" VerticalAlignment="Bottom" Margin="88,106,0,224" Height="30" FontSize="20" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="88" Click="pn_Click" Background="White" Foreground="Black"/>
+        <Button x:Name="refreshBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="RE" VerticalAlignment="Bottom" Margin="176,106,0,224" Height="30" FontSize="20" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="88" Click="refresh_Click" Background="White" Foreground="Black"/>
+
+    </Grid>
+</Window>
