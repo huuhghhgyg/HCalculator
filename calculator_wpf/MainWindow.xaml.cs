@@ -14,13 +14,15 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MaterialDesignColors;
 using MaterialDesignThemes;
+using MahApps.Metro.Controls;
+using System.Windows.Media.Animation;
 
 namespace calculator_wpf
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
@@ -291,6 +293,9 @@ namespace calculator_wpf
                                 result = (Convert.ToDouble(firstMath) / Convert.ToDouble(secMath)).ToString();
                             }
                             break;
+                        case "^":
+                            result = Math.Pow(Convert.ToDouble(firstMath), Convert.ToDouble(secMath)).ToString();
+                            break;
                         }
                         resultBox.Text += "\r\n=" + result;//输出过程已自带
                         smatGus = result;
@@ -394,10 +399,30 @@ namespace calculator_wpf
         {
             backspace();
         }
-
+        bool outed = false;
         private void refresh_Click(object sender, RoutedEventArgs e)
         {
-            refresh();
+            //refresh();
+            if (outed==false)
+            {
+                outed = true;
+                ThicknessAnimation ta = new ThicknessAnimation();
+                ta.From = new Thickness(264, 157, 0, 0);             //起始值
+                ta.To = new Thickness(80, 157, 0, 0);        //结束值
+                ta.Duration = TimeSpan.FromSeconds(0.2);         //动画持续时间
+                board.BeginAnimation(MarginProperty, ta);//开始动画
+                refreshBtn.Content="→";
+            }
+            else
+            {
+                outed = false;
+                ThicknessAnimation ta = new ThicknessAnimation();
+                ta.From = new Thickness(80, 157, 0, 0);             //起始值
+                ta.To = new Thickness(264, 157, 0, 0);        //结束值
+                ta.Duration = TimeSpan.FromSeconds(0.2);         //动画持续时间
+                board.BeginAnimation(MarginProperty, ta);//开始动画
+                refreshBtn.Content = "←";
+            }
         }
 
         private void per_Click(object sender, RoutedEventArgs e)
@@ -410,7 +435,14 @@ namespace calculator_wpf
                 }
                 else
                 {
-                    secMath = (Convert.ToDouble(secMath) * 0.01).ToString();//firstmath乘0.01(%)再转换为string
+                    if (secMath=="")
+                    {
+                        firstMath = (Convert.ToDouble(firstMath) * 0.01).ToString();//firstmath乘0.01(%)再转换为string
+                    }
+                    else
+                    {
+                        secMath = (Convert.ToDouble(secMath) * 0.01).ToString();//firstmath乘0.01(%)再转换为string
+                    }
                 }
                 refresh();
             }
@@ -418,29 +450,7 @@ namespace calculator_wpf
 
         private void nn_Click(object sender, RoutedEventArgs e)
         {
-            if (sym=="")//符号为空（正在输入第一个数）
-            {
-                if (firstMath=="")//第一个数还没有输的时候
-                {
-                    firstMath = "3.1415926535898";
-                }
-                else
-                {
-                    firstMath = (Convert.ToDouble(firstMath) * 3.1415926535898).ToString();
-                }
-            }
-            else
-            {
-                if (secMath == "")//第一个数还没有输的时候
-                {
-                    secMath = "3.1415926535898";
-                }
-                else
-                {
-                    secMath = (Convert.ToDouble(secMath) * 3.1415926535898).ToString();
-                }
-            }
-            refresh();
+            doCal("^");
         }
 
         private void clear_Click(object sender, RoutedEventArgs e)
@@ -663,6 +673,79 @@ namespace calculator_wpf
         {
             info infoForm = new info();
             infoForm.Show();
+        }
+
+        private void rnd_Selected(object sender, RoutedEventArgs e)
+        {
+            out1.Text = "最小值";out2.Text = "最大值";
+            clearInput();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(menu1.SelectedIndex.ToString());
+                switch (menu1.SelectedIndex)
+                {
+                    case 1:
+                        Random rad = new Random();//实例化随机数产生器rad；
+                        int value = rad.Next(int.Parse(box1.Text), int.Parse(box2.Text));//用rad生成大于等于1000，小于等于9999的随机数；
+                        resultBox1.Text = value.ToString();
+                        break;
+                    case 3:
+                        resultBox1.Text = (int.Parse(box1.Text) * int.Parse(box2.Text)).ToString();
+                        break;
+                    case 4:
+                        resultBox1.Text = (Convert.ToDouble(box2.Text) * Convert.ToDouble(box1.Text) * Convert.ToDouble(box1.Text)).ToString();
+                        break;
+                }
+            }
+            catch { }
+        }
+
+        private void clearInput()
+        {
+            box1.Text = "";box2.Text = "";resultBox1.Text = "";
+        }
+
+        private void ab_Selected(object sender, RoutedEventArgs e)
+        {
+            out1.Text = "长";out2.Text = "宽";
+            clearInput();
+        }
+
+        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+            out1.Text = "半径";out2.Text = "π取值";box2.Text = "3.14";
+            clearInput();
+        }
+
+        private void pi_Click(object sender, RoutedEventArgs e)
+        {
+            if (sym == "")
+            {
+                if (firstMath == "")
+                {
+                    firstMath = Math.PI.ToString();
+                }
+                else
+                {
+                    firstMath = (Convert.ToDouble(firstMath) * Math.PI).ToString();
+                }
+            }
+            else
+            {
+                if (secMath == "")
+                {
+                    secMath = Math.PI.ToString();
+                }
+                else
+                {
+                    secMath = (Convert.ToDouble(secMath) * Math.PI).ToString();
+                }
+            }
+            refresh();
         }
     }
 }
