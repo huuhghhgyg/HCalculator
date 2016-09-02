@@ -10,75 +10,96 @@
         GlowBrush="{DynamicResource AccentColorBrush}"
         Title="Calculator" Height="460" Width="434.333" KeyDown="Window_KeyDown" ResizeMode="NoResize" MouseRightButtonDown="Window_MouseRightButtonDown" Icon="asstes/hourglass.png">
 
-    <TabControl x:Name="tabControl" Margin="0,0,0.333,-2.667">
-        <TabItem Header="计算">
-            <Grid Background="White" Margin="0,0,0.333,-0.333">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="37*"/>
-                    <ColumnDefinition Width="10*"/>
-                </Grid.ColumnDefinitions>
-                <Grid Margin="0,9,0.667,0" KeyDown="Grid_KeyDown" Grid.ColumnSpan="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox x:Name="resultBox" TextWrapping="Wrap" Margin="10,0,10,275.333" FontSize="40" Text="0" IsReadOnly="True" IsReadOnlyCaretVisible="True" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Visible" BorderBrush="#89000000"/>
+    <Grid Margin="0">
+        <TabControl x:Name="tabControl" Margin="0">
 
-                    <Button x:Name="num7" Style="{StaticResource MaterialDesignFlatButton}" Content="7" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,136,0,168" Height="56" FontSize="40" Click="num7_Click" Background="White" BorderBrush="#FFF0F0F0" Foreground="Black"/>
-                    <Button x:Name="num8" Style="{StaticResource MaterialDesignFlatButton}" Content="8" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="88,136,0,168" Height="56" FontSize="40" Click="num8_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
-                    <Button x:Name="num9" Style="{StaticResource MaterialDesignFlatButton}" Content="9" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="176,0,0,168" Height="56" FontSize="40" Click="num9_Click" BorderBrush="#FF7F7F89" Background="White" Foreground="Black"/>
-                    <Button x:Name="num4" Style="{StaticResource MaterialDesignFlatButton}" Content="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,192,0,112" Height="56" FontSize="40" Click="num4_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
-                    <Button x:Name="num5" Style="{StaticResource MaterialDesignFlatButton}" Content="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="88,192,0,112" Height="56" FontSize="40" Click="num5_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
-                    <Button x:Name="num6"  Style="{StaticResource MaterialDesignFlatButton}" Content="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="176,192,0,112" Height="56" FontSize="40" Click="num6_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
-                    <Button x:Name="num1" Style="{StaticResource MaterialDesignFlatButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,248,0,56" Height="56" FontSize="40" Click="num1_Click_1" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
-                    <Button x:Name="num2" Style="{StaticResource MaterialDesignFlatButton}" Content="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="88,248,0,56" Height="56" FontSize="40" Click="num2_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
-                    <Button x:Name="num3" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="176,248,0,56" Height="56" FontSize="40" Click="num3_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black" Content="3"/>
-                    <Button x:Name="dot" Style="{StaticResource MaterialDesignFlatButton}" Content="." HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,304,0,0" Height="56" FontSize="40" BorderBrush="#FFF0F0F0" Click="dot_Click" Background="White" Foreground="Black"/>
-                    <Button x:Name="num0" Style="{StaticResource MaterialDesignFlatButton}" Content="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="176" Margin="88,304,0,0" Height="56" FontSize="40" Click="num0_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
-                    <Button x:Name="clear" Style="{StaticResource MaterialDesignFlatButton}" Content="C" VerticalAlignment="Bottom" Margin="176,0,0,224.333" Height="30" FontSize="20" BorderBrush="Gray" Click="clear_Click" HorizontalAlignment="Left" Width="88" Background="White" Foreground="Black"/>
-                    <Button x:Name="backSpace" Style="{StaticResource MaterialDesignFlatButton}" Content="Back" VerticalAlignment="Bottom" Margin="344,0,-2,224.333" Height="30" BorderBrush="{x:Null}" Foreground="Black" Click="backSpace_Click" HorizontalAlignment="Left" Width="80" Background="White"/>
-                    <Button x:Name="exit" Style="{StaticResource MaterialDesignFlatButton}" Content="Exit" VerticalAlignment="Bottom" Margin="0,106,0,224" Height="30" FontSize="20" BorderBrush="{x:Null}" Click="exit_Click" HorizontalAlignment="Left" Width="88" Background="White" Foreground="Black"/>
-                    <Button x:Name="pn" Style="{StaticResource MaterialDesignFlatButton}" Content="+/-" VerticalAlignment="Bottom" Margin="88,106,0,224" Height="30" FontSize="20" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="88" Click="pn_Click" Background="White" Foreground="Black"/>
-                    <Button x:Name="refreshBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="←" VerticalAlignment="Bottom" Margin="264,0,0,224.333" Height="30" FontSize="20" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="80" Click="refresh_Click" Background="White" Foreground="Black"/>
-                    <Grid x:Name="board" HorizontalAlignment="Left" Height="231" Margin="264,157,-277,-6.667" VerticalAlignment="Top" Width="435" Background="#FF73DF9A">
-                        <Button x:Name="pi" Style="{StaticResource MaterialDesignFlatButton}" Content="π" Margin="0,0,0,175" Height="56" VerticalAlignment="Bottom" FontSize="40" BorderBrush="#FFDDDDDD" Click="pi_Click" HorizontalAlignment="Left" Width="80" Background="#FF73DF9A" Foreground="Black"/>
-                        <Button x:Name="divideBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="÷" Margin="80,0,0,175" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="divideBtn_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Background="#FF73DF9A" Foreground="Black"/>
-                        <Button x:Name="multiplyBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="×" Margin="80,0,0,119" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="multiplyBtn_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Background="#FF73DF9A" Foreground="Black"/>
-                        <Button x:Name="per" Style="{StaticResource MaterialDesignFlatButton}" Content="%" VerticalAlignment="Bottom" Margin="0,0,0,119" Height="56" FontSize="40" BorderBrush="#FFDDDDDD" Click="per_Click" HorizontalAlignment="Left" Width="80" Background="#FF73DF9A" Foreground="Black"/>
-                        <Button x:Name="minusBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="-" Margin="0,0,0,63" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="minusBtn_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Background="#FF73DF9A" Foreground="Black"/>
-                        <Button x:Name="plusBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="+" Margin="0,0,0,7" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="plusBtn_Click" HorizontalAlignment="Left" Width="80" BorderBrush="#FFDDDDDD" Background="#FF73DF9A" Foreground="Black"/>
-                        <Button x:Name="equals" Style="{StaticResource MaterialDesignFlatButton}" Content="=" Margin="80,0,0,7" FontSize="40" Click="equals_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Height="112" VerticalAlignment="Bottom" Background="#FF73DF9A" Foreground="Black"/>
-                        <Grid Margin="160,0,10,-1" Background="#FF64C888">
-                            <Button x:Name="xxx" Style="{StaticResource MaterialDesignFlatButton}" Content="^" Margin="0,0,0,175.333" Height="56" VerticalAlignment="Bottom" FontSize="40" BorderBrush="#FFDDDDDD" Click="nn_Click" HorizontalAlignment="Left" Width="80" Background="#FF64C888" Foreground="Black"/>
+            <TabItem Header="计算" BorderBrush="#FF41B1E1">
+                <Grid Background="White" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Margin="0,9,0.667,0" KeyDown="Grid_KeyDown" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="resultBox" TextWrapping="Wrap" Margin="10,0,10,275.333" FontSize="40" Text="0" IsReadOnly="True" IsReadOnlyCaretVisible="True" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Visible" BorderBrush="#89000000"/>
+
+                        <Button x:Name="num7" Style="{StaticResource MaterialDesignFlatButton}" Content="7" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,136,0,168" Height="56" FontSize="40" Click="num7_Click" Background="White" BorderBrush="#FFF0F0F0" Foreground="Black"/>
+                        <Button x:Name="num8" Style="{StaticResource MaterialDesignFlatButton}" Content="8" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="88,136,0,168" Height="56" FontSize="40" Click="num8_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+                        <Button x:Name="num9" Style="{StaticResource MaterialDesignFlatButton}" Content="9" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="176,0,0,168" Height="56" FontSize="40" Click="num9_Click" BorderBrush="#FF7F7F89" Background="White" Foreground="Black"/>
+                        <Button x:Name="num4" Style="{StaticResource MaterialDesignFlatButton}" Content="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,192,0,112" Height="56" FontSize="40" Click="num4_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+                        <Button x:Name="num5" Style="{StaticResource MaterialDesignFlatButton}" Content="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="88,192,0,112" Height="56" FontSize="40" Click="num5_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+                        <Button x:Name="num6"  Style="{StaticResource MaterialDesignFlatButton}" Content="6" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="176,192,0,112" Height="56" FontSize="40" Click="num6_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+                        <Button x:Name="num1" Style="{StaticResource MaterialDesignFlatButton}" Content="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,248,0,56" Height="56" FontSize="40" Click="num1_Click_1" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+                        <Button x:Name="num2" Style="{StaticResource MaterialDesignFlatButton}" Content="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="88,248,0,56" Height="56" FontSize="40" Click="num2_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+                        <Button x:Name="num3" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="176,248,0,56" Height="56" FontSize="40" Click="num3_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black" Content="3"/>
+                        <Button x:Name="dot" Style="{StaticResource MaterialDesignFlatButton}" Content="." HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="88" Margin="0,304,0,0" Height="56" FontSize="40" BorderBrush="#FFF0F0F0" Click="dot_Click" Background="White" Foreground="Black"/>
+                        <Button x:Name="num0" Style="{StaticResource MaterialDesignFlatButton}" Content="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="176" Margin="88,304,0,0" Height="56" FontSize="40" Click="num0_Click" BorderBrush="#FFF0F0F0" Background="White" Foreground="Black"/>
+                        <Button x:Name="clear" Style="{StaticResource MaterialDesignFlatButton}" Content="C" VerticalAlignment="Bottom" Margin="176,0,0,224.333" Height="30" FontSize="20" BorderBrush="Gray" Click="clear_Click" HorizontalAlignment="Left" Width="88" Background="White" Foreground="Black"/>
+                        <Button x:Name="backSpace" Style="{StaticResource MaterialDesignFlatButton}" Content="Back" VerticalAlignment="Bottom" Margin="344,0,-2,224.333" Height="30" BorderBrush="{x:Null}" Foreground="Black" Click="backSpace_Click" HorizontalAlignment="Left" Width="80" Background="White"/>
+                        <Button x:Name="exit" Style="{StaticResource MaterialDesignFlatButton}" Content="Exit" VerticalAlignment="Bottom" Margin="0,106,0,224" Height="30" FontSize="20" BorderBrush="{x:Null}" Click="exit_Click" HorizontalAlignment="Left" Width="88" Background="White" Foreground="Black"/>
+                        <Button x:Name="pn" Style="{StaticResource MaterialDesignFlatButton}" Content="+/-" VerticalAlignment="Bottom" Margin="88,106,0,224" Height="30" FontSize="20" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="88" Click="pn_Click" Background="White" Foreground="Black"/>
+                        <Button x:Name="refreshBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="←" VerticalAlignment="Bottom" Margin="264,0,0,224.333" Height="30" FontSize="20" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="80" Click="refresh_Click" Background="White" Foreground="Black"/>
+                        <Grid x:Name="board" HorizontalAlignment="Left" Height="231" Margin="264,157,-277,-6.667" VerticalAlignment="Top" Width="435" Background="#FF73DF9A">
+                            <Button x:Name="pi" Style="{StaticResource MaterialDesignFlatButton}" Content="π" Margin="0,0,0,175" Height="56" VerticalAlignment="Bottom" FontSize="40" BorderBrush="#FFDDDDDD" Click="pi_Click" HorizontalAlignment="Left" Width="80" Background="#FF73DF9A" Foreground="Black"/>
+                            <Button x:Name="divideBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="÷" Margin="80,0,0,175" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="divideBtn_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Background="#FF73DF9A" Foreground="Black"/>
+                            <Button x:Name="multiplyBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="×" Margin="80,0,0,119" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="multiplyBtn_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Background="#FF73DF9A" Foreground="Black"/>
+                            <Button x:Name="per" Style="{StaticResource MaterialDesignFlatButton}" Content="%" VerticalAlignment="Bottom" Margin="0,0,0,119" Height="56" FontSize="40" BorderBrush="#FFDDDDDD" Click="per_Click" HorizontalAlignment="Left" Width="80" Background="#FF73DF9A" Foreground="Black"/>
+                            <Button x:Name="minusBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="-" Margin="0,0,0,63" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="minusBtn_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Background="#FF73DF9A" Foreground="Black"/>
+                            <Button x:Name="plusBtn" Style="{StaticResource MaterialDesignFlatButton}" Content="+" Margin="0,0,0,7" Height="56" VerticalAlignment="Bottom" FontSize="40" Click="plusBtn_Click" HorizontalAlignment="Left" Width="80" BorderBrush="#FFDDDDDD" Background="#FF73DF9A" Foreground="Black"/>
+                            <Button x:Name="equals" Style="{StaticResource MaterialDesignFlatButton}" Content="=" Margin="80,0,0,7" FontSize="40" Click="equals_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Height="112" VerticalAlignment="Bottom" Background="#FF73DF9A" Foreground="Black"/>
+                            <Grid Margin="160,0,10,-1" Background="#FF64C888">
+                                <Button x:Name="xxx" Style="{StaticResource MaterialDesignFlatButton}" Content="^" Margin="0,0,0,175.333" Height="56" VerticalAlignment="Bottom" FontSize="40" BorderBrush="#FFDDDDDD" Click="nn_Click" HorizontalAlignment="Left" Width="80" Background="#FF64C888" Foreground="Black"/>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-        </TabItem>
-        <TabItem Header="其他" BorderBrush="#FF41B1E1">
-            <Grid Background="White" Width="424" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Margin="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="28*"/>
-                    <RowDefinition Height="363*"/>
-                </Grid.RowDefinitions>
-                <TextBox x:Name="box1" HorizontalAlignment="Left" Height="23" Margin="15,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
-                <TextBox x:Name="box2" HorizontalAlignment="Left" Height="23" Margin="15,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
-                <ComboBox x:Name="menu1" HorizontalAlignment="Left" Margin="15,3,0,0" VerticalAlignment="Top" Width="154" Grid.Row="1">
-                    <Separator/>
-                    <ComboBoxItem x:Name="rnd" Content="随机数" Selected="rnd_Selected"/>
-                    <Separator/>
-                    <ComboBoxItem x:Name="ab" Content="S长方形[正方形]" Selected="ab_Selected"/>
-                    <ComboBoxItem Content="S圆" Selected="ComboBoxItem_Selected"/>
-                </ComboBox>
-                <TextBlock x:Name="out1" HorizontalAlignment="Left" Margin="15,32,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Grid.Row="1"/>
-                <TextBlock x:Name="out2" HorizontalAlignment="Left" Margin="15,81,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Grid.Row="1"/>
-                <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,2,0,0" TextWrapping="Wrap" Text="杂项计算" VerticalAlignment="Top" Height="24" Width="90" FontSize="20"/>
-                <Button x:Name="button" Style="{StaticResource MaterialDesignFlatButton}" Content="计算" HorizontalAlignment="Left" Margin="94,172,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Foreground="#FF41B1E1" Click="button_Click"/>
-                <TextBox x:Name="resultBox1" HorizontalAlignment="Left" Height="23" Margin="15,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
-                <TextBlock x:Name="label" HorizontalAlignment="Left" Margin="15,129,0,0" TextWrapping="Wrap" Text="结果" VerticalAlignment="Top" Grid.Row="1"/>
-            </Grid>
-        </TabItem>
-    </TabControl>
+            </TabItem>
+            <TabItem Header="其他" BorderBrush="#FF41B1E1">
+                <Grid Background="White" Width="424" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28*"/>
+                        <RowDefinition Height="363*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="box1" HorizontalAlignment="Left" Height="23" Margin="15,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
+                    <TextBox x:Name="box2" HorizontalAlignment="Left" Height="23" Margin="15,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
+                    <ComboBox x:Name="menu1" HorizontalAlignment="Left" Margin="15,3,0,0" VerticalAlignment="Top" Width="154" Grid.Row="1" Height="24">
+                        <Separator/>
+                        <ComboBoxItem x:Name="rnd" Content="随机数" Selected="rnd_Selected"/>
+                        <Separator/>
+                        <ComboBoxItem x:Name="ab" Content="S长方形[正方形]" Selected="ab_Selected"/>
+                        <ComboBoxItem Content="S圆" Selected="ComboBoxItem_Selected"/>
+                    </ComboBox>
+                    <TextBlock x:Name="out1" HorizontalAlignment="Left" Margin="15,32,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Grid.Row="1" Height="15" Width="32"/>
+                    <TextBlock x:Name="out2" HorizontalAlignment="Left" Margin="15,81,0,0" TextWrapping="Wrap" Text="None" VerticalAlignment="Top" Grid.Row="1" Height="15" Width="32"/>
+                    <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,3,0,0" TextWrapping="Wrap" Text="杂项计算" VerticalAlignment="Top" Height="24" Width="90" FontSize="20"/>
+                    <Button x:Name="button" Style="{StaticResource MaterialDesignFlatButton}" Content="计算" HorizontalAlignment="Left" Margin="127,177,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Foreground="#FF41B1E1" Click="button_Click"/>
+                    <TextBox x:Name="resultBox1" HorizontalAlignment="Left" Height="23" Margin="15,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
+                    <TextBlock x:Name="label" HorizontalAlignment="Left" Margin="15,129,0,0" TextWrapping="Wrap" Text="结果" VerticalAlignment="Top" Grid.Row="1" Height="15" Width="24"/>
+                    <TextBlock x:Name="textBlock2_Copy" HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="相隔天数" VerticalAlignment="Top" Height="24" Width="90" FontSize="20" Grid.Column="1"/>
+                    <Label x:Name="label1" Content="格式:0000-00-00" Grid.Column="1" HorizontalAlignment="Left" Margin="10,9,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                    <TextBox x:Name="date1" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,68,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+                    <Label x:Name="label1_Copy" Content="时间1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,43,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                    <TextBox x:Name="date2" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,149,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+                    <Label x:Name="label1_Copy1" Content="时间2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,124,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                    <Button x:Name="calTime" Style="{StaticResource MaterialDesignFlatButton}" Content="计算" HorizontalAlignment="Left" Margin="127,177,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Foreground="#FF41B1E1" Grid.Column="1" Click="calTime_Click"/>
+                    <Label x:Name="label2" Content="结果" Grid.Column="1" HorizontalAlignment="Left" Margin="10,205,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+                    <TextBox x:Name="dayResult" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,235,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid x:Name="Message" Background="#FF41B1E1" Margin="0,-139,-0.333,459" Height="112" >
+            <Label x:Name="msgTitle" Content="Label" HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" VerticalAlignment="Top" Width="376" Foreground="#DDFFFFFF" FontSize="20"/>
+            <Label x:Name="boxMsg" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,45,0,0" Width="409" Height="57" Foreground="#DDFFFFFF"/>
+        </Grid>
+
+    </Grid>
 </controls:MetroWindow>

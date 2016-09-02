@@ -16,6 +16,7 @@ using MaterialDesignColors;
 using MaterialDesignThemes;
 using MahApps.Metro.Controls;
 using System.Windows.Media.Animation;
+using System.Threading;
 
 namespace calculator_wpf
 {
@@ -282,7 +283,7 @@ namespace calculator_wpf
                         case "÷":
                             if (secMath == "0" && sym == "÷")
                             {
-                                resultBox.Text = "除数不能为零!";
+                                showMsg("错误", "除数不能为零，所有数据已经被清零",1500);
                                 sym = "";
                                 firstMath = "";
                                 secMath = "";
@@ -685,7 +686,7 @@ namespace calculator_wpf
         {
             try
             {
-                MessageBox.Show(menu1.SelectedIndex.ToString());
+                //MessageBox.Show(menu1.SelectedIndex.ToString());
                 switch (menu1.SelectedIndex)
                 {
                     case 1:
@@ -746,6 +747,71 @@ namespace calculator_wpf
                 }
             }
             refresh();
+        }
+
+        private void Expander_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ThicknessAnimation ta = new ThicknessAnimation();
+            ta.From = new Thickness(0, -139, -0.333, 459);             //起始值
+            ta.To = new Thickness(0, 0, 0, 320);        //结束值
+            ta.Duration = TimeSpan.FromSeconds(0.2);         //动画持续时间
+            Message.BeginAnimation(MarginProperty, ta);//开始动画
+        }
+
+        private void showMsg(string title,string msg,int showTime)
+        {
+            msgTitle.Content = title;
+            boxMsg.Content = msg;
+            ThicknessAnimation ta = new ThicknessAnimation();
+            ta.From = new Thickness(0, -139, -0.333, 459);             
+            ta.To = new Thickness(0, 0, 0, 320);        
+            ta.Duration = TimeSpan.FromSeconds(0.2);         //动画持续时间
+            Message.BeginAnimation(MarginProperty, ta);//开始动画
+            Thread t = new Thread(() =>
+            {
+                Thread.Sleep(showTime);//次线程休眠1秒
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    ThicknessAnimation to = new ThicknessAnimation();
+                    to.To = new Thickness(0, -139, -0.333, 459);
+                    to.From = new Thickness(0, 0, 0, 320);
+                    to.Duration = TimeSpan.FromSeconds(0.2);         //动画持续时间
+                    Message.BeginAnimation(MarginProperty, to);//开始动画
+                }));
+            });
+            t.Start();
+        }
+
+        private void calTime_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DateTime time1;
+                DateTime time2;
+                time1 = DateTime.Parse(date1.Text);
+                time2 = DateTime.Parse(date2.Text);
+
+                TimeSpan ts = time1 - time2;
+                double dDays = ts.TotalDays;
+
+                dayResult.Text = (Math.Abs(dDays)).ToString() + "天";
+            }
+            catch(System.FormatException)
+            {
+                showMsg("计算时错误", "输入的日期格式错误", 1500);
+            }
+            catch { }
+        }
+
+        private string DateDiff(DateTime DateTime1, DateTime DateTime2)
+        {
+            string dateDiff = null;
+            TimeSpan ts1 = new TimeSpan(DateTime1.Ticks);
+            TimeSpan ts2 = new
+            TimeSpan(DateTime2.Ticks);
+            TimeSpan ts = ts1.Subtract(ts2).Duration();
+            dateDiff = ts.Days.ToString() + "天" + ts.Hours.ToString() + "小时" + ts.Minutes.ToString() + "分钟" + ts.Seconds.ToString() + "秒";
+            return dateDiff;
         }
     }
 }
