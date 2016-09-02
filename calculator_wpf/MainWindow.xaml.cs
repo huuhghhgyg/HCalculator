@@ -702,7 +702,10 @@ namespace calculator_wpf
                         break;
                 }
             }
-            catch { }
+            catch
+            {
+                showMsg("无法计算", "输入的数值不正确或者无法计算", 1500);
+            }
         }
 
         private void clearInput()
