@@ -133,12 +133,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="asstes\backspace_black.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="asstes\refresh_black.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="asstes\hourglass.png" />
   </ItemGroup>
   <ItemGroup>
