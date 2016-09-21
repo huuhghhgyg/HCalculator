@@ -198,7 +198,22 @@ namespace calculator_wpf
             {
                 if (sym == "")
                 {
-                    firstMath = (Convert.ToDouble(firstMath) * -1).ToString();//firstmath乘-1再转换为string
+                    if (firstMath == "")
+                    {
+                        if (smatGus == "")
+                        {
+                            firstMath = "0";
+                        }
+                        else
+                        {
+                            firstMath = (Convert.ToDouble(smatGus) * -1).ToString();
+                            smatGus = "";
+                        }
+                    }
+                    else
+                    {
+                        firstMath = (Convert.ToDouble(firstMath) * -1).ToString();//firstmath乘-1再转换为string
+                    }
                 }
                 else
                 {
@@ -207,7 +222,9 @@ namespace calculator_wpf
                 refresh();
             }
             catch
-            { }
+            {
+                showMsg("错误", "计算该数负值错误", 1500);
+            }
         }
 
         private void enter(int press)
