@@ -133,9 +133,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="asstes\hourglass.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="asstes\ic_polymer_grey600_48dp.png" />
   </ItemGroup>
   <ItemGroup>
