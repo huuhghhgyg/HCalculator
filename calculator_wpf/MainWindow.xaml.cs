@@ -443,6 +443,7 @@ namespace calculator_wpf
             }
         }
 
+        ///////////////bug标记
         private void per_Click(object sender, RoutedEventArgs e)
         {
             if (firstMath != "")//避免""乘0.01
@@ -462,8 +463,16 @@ namespace calculator_wpf
                         secMath = (Convert.ToDouble(secMath) * 0.01).ToString();//firstmath乘0.01(%)再转换为string
                     }
                 }
-                refresh();
             }
+            else
+            {
+                if (smatGus != "")
+                {
+                    firstMath = (Convert.ToDouble(smatGus) * 0.01).ToString();
+                    smatGus = "";
+                }
+            }
+            refresh();
         }
 
         private void nn_Click(object sender, RoutedEventArgs e)
@@ -484,7 +493,7 @@ namespace calculator_wpf
             { 
                 case Key.Enter:
                     calculate();
-                break;
+                    break;
                 case Key.NumPad1:
                     enter(1);
                     break;
@@ -515,7 +524,7 @@ namespace calculator_wpf
                 case Key.NumPad0:
                     enter(0);
                     break;          //按键反应：数字键盘
-
+/*
                 case Key.D0:
                     enter(0);
                     break;
@@ -546,7 +555,7 @@ namespace calculator_wpf
                 case Key.D9:
                     enter(9);
                     break;
-
+                    */
                 case Key.Add:
                     doCal("+");
                     break;
@@ -587,7 +596,7 @@ namespace calculator_wpf
 
         private void Grid_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
+            /*switch (e.Key)
             {
                 case Key.Enter:
                     calculate();
@@ -683,8 +692,7 @@ namespace calculator_wpf
                     break;
                 case Key.F5:
                     refresh();
-                    break;
-            }
+                    break;*/
         }
 
         private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
