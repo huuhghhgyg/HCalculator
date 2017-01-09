@@ -1,0 +1,8 @@
+title: Hcalculator
+description: A calculator written by huuhghhgyg
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
