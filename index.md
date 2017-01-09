@@ -15,8 +15,13 @@ To MainPage(回主页) https://huuhghhgyg.github.io/
 计算器2.0(已遗失)
 作为向Material Design的过渡
 
-计算器3.0(现在版本)[持续更新中]
+计算器3.0
 
 ![](/images/Calculator3.0.png)
 
-拥有更好的界面，Material Design设计标准，更多的功能。支持生成随机数，计算日期之间的间隔等新功能。持续更新
+拥有更好的界面，Material Design设计标准，更多的功能。支持生成随机数，计算日期之间的间隔等新功能。
+
+计算器4.0(现在版本)[持续更新中]
+
+![](/images/Calculator4.0.png)
+新增了科学计算器。改进了科学计算器的界面。持续改进!
