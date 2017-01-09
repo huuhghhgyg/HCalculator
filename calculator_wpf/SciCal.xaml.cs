@@ -12,13 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CalCore;
+using MahApps.Metro.Controls;
 
 namespace calculator_wpf
 {
     /// <summary>
     /// SciCal.xaml 的交互逻辑
     /// </summary>
-    public partial class SciCal : Window
+    public partial class SciCal : MetroWindow
     {
         public SciCal()
         {
@@ -28,7 +29,7 @@ namespace calculator_wpf
         private void equals_Click(object sender, RoutedEventArgs e)
         {
             Class1 calcore = new Class1();
-            outPut.Text += input.Text + "\nResult:" + calcore.adCal(input.Text)+"\n";
+            outPut.Text += input.Text + "\nResult=" + calcore.adCal(input.Text)+"\n\n";
             outPut.ScrollToEnd();
         }
 
