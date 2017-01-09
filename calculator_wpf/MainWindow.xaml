@@ -57,6 +57,8 @@
                             <Button x:Name="equals" Style="{StaticResource MaterialDesignFlatButton}" Content="=" Margin="80,0,0,7" FontSize="40" Click="equals_Click" BorderBrush="#FFDDDDDD" HorizontalAlignment="Left" Width="80" Height="112" VerticalAlignment="Bottom" Background="#FF73DF9A" Foreground="Black" FontWeight="Normal"/>
                             <Grid Margin="160,0,10,-1" Background="#FF64C888">
                                 <Button x:Name="xxx" Style="{StaticResource MaterialDesignFlatButton}" Content="^" Margin="0,0,0,175.333" Height="56" VerticalAlignment="Bottom" FontSize="40" BorderBrush="#FFDDDDDD" Click="nn_Click" HorizontalAlignment="Left" Width="80" Background="#FF64C888" Foreground="Black"/>
+                                <Label x:Name="label3" Content="科学计算(Beta)" HorizontalAlignment="Left" Margin="25,114,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                                <Button x:Name="science" Content="Go" HorizontalAlignment="Left" Margin="48,149,0,0" VerticalAlignment="Top" Width="75" Background="#FF009688" BorderBrush="#FF009688" Click="science_Click"/>
                             </Grid>
                         </Grid>
                     </Grid>

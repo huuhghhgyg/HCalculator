@@ -17,6 +17,7 @@ using MaterialDesignThemes;
 using MahApps.Metro.Controls;
 using System.Windows.Media.Animation;
 using System.Threading;
+using calculator_wpf;
 
 namespace calculator_wpf
 {
@@ -840,6 +841,12 @@ namespace calculator_wpf
             TimeSpan ts = ts1.Subtract(ts2).Duration();
             dateDiff = ts.Days.ToString() + "天" + ts.Hours.ToString() + "小时" + ts.Minutes.ToString() + "分钟" + ts.Seconds.ToString() + "秒";
             return dateDiff;
+        }
+
+        private void science_Click(object sender, RoutedEventArgs e)
+        {
+            SciCal scical = new SciCal();
+            scical.Show();
         }
     }
 }
