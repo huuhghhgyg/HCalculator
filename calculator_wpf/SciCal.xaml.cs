@@ -29,6 +29,7 @@ namespace calculator_wpf
         {
             Class1 calcore = new Class1();
             outPut.Text += input.Text + "\nResult:" + calcore.adCal(input.Text)+"\n";
+            outPut.ScrollToEnd();
         }
 
         private void input_TextChanged(object sender, TextChangedEventArgs e)
