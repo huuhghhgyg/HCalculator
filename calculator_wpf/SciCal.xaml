@@ -33,8 +33,8 @@
         </Grid>
         <Button x:Name="button" Content="Tips" Margin="0,245,10.333,0" Background="#FF607D8B" BorderBrush="#FF607D8B" HorizontalAlignment="Right" Width="75" Height="32" VerticalAlignment="Top"/>
         <Button x:Name="equals" Content="=" Margin="0,282,10.333,9.667" Height="Auto" FontSize="40" HorizontalAlignment="Right" Width="75" Click="equals_Click"/>
-        <TextBox x:Name="input" Margin="12,268,100.333,9.667" TextWrapping="Wrap" Background="#FF2196F3" Foreground="#DDFFFFFF" Text="0" TextChanged="input_TextChanged"/>
-        <Grid x:Name="inputTitle" Height="23" Margin="12,245,100.333,0" VerticalAlignment="Top" Background="#FF1976D2" OpacityMask="Black">
+        <TextBox x:Name="input" Margin="10,268,100.333,9.667" TextWrapping="Wrap" Background="#FF2196F3" Foreground="#DDFFFFFF" Text="0" TextChanged="input_TextChanged"/>
+        <Grid x:Name="inputTitle" Height="23" Margin="10,245,100.333,0" VerticalAlignment="Top" Background="#FF1976D2" OpacityMask="Black">
             <Label x:Name="label" Content="Formula Input" HorizontalAlignment="Left" VerticalAlignment="Top" Width="128" Foreground="#DDFFFFFF" FontWeight="Bold"/>
         </Grid>
     </Grid>

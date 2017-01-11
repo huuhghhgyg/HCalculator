@@ -35,21 +35,25 @@ namespace calculator_wpf
 
         private void input_TextChanged(object sender, TextChangedEventArgs e)
         {
-            /*Class1 calcore = new Class1();
-            if (calcore.adCal(input.Text) == "Error")
-            {//#D32F2F
-                inputTitle.Background = new SolidColorBrush(Color.FromRgb(211, 47, 47));
-                //#F44336
-                input.Background = new SolidColorBrush(Color.FromRgb(244, 67, 54));
-            }
-            else
+            Class1 calcore = new Class1();
+            try
             {
-                //#1976D2
-                //inputTitle.Background = 
-                inputTitle.Background = new SolidColorBrush(Color.FromArgb(255, 255, 0, 0));
-                //#2196F3
-                input.Background = new SolidColorBrush(Color.FromRgb(33, 150, 243));
-            }*/
+                if (calcore.adCal(input.Text) == "Error")
+                {//#D32F2F
+                    inputTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#D32F2F"));
+                    //#F44336
+                    input.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F44336"));
+                }
+                else
+                {
+                    //#1976D2
+                    //inputTitle.Background = 
+                    inputTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1976D2"));
+                    //#2196F3
+                    input.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2196F3"));
+                }
+            }
+            catch { }
         }
     }
 }
