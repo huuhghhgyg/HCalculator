@@ -40,9 +40,9 @@ namespace calculator_wpf
             {
                 if (calcore.adCal(input.Text) == "Error")
                 {//#D32F2F
-                    inputTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#D32F2F"));
+                    inputTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C2185B"));
                     //#F44336
-                    input.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F44336"));
+                    input.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E91E63"));
                 }
                 else
                 {
