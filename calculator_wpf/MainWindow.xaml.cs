@@ -491,7 +491,7 @@ namespace calculator_wpf
  //           var key = e.Key;
 //            MessageBox.Show(key.ToString());
             switch (e.Key)
-            { 
+            {
                 case Key.Enter:
                     calculate();
                     break;

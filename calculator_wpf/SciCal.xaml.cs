@@ -28,9 +28,41 @@ namespace calculator_wpf
 
         private void equals_Click(object sender, RoutedEventArgs e)
         {
+            calculate();
+        }
+
+        string lastFormula;
+        private void cal()
+        {
+            if (input.Text != "")
+            {
+                Class1 calcore = new Class1();
+                lastFormula = input.Text;
+                outPut.Text += input.Text + "\nResult=" + calcore.adCal(input.Text) + "\n\n";
+                outPut.ScrollToEnd();
+            }
+        }
+
+        private void calculate()
+        {
             Class1 calcore = new Class1();
-            outPut.Text += input.Text + "\nResult=" + calcore.adCal(input.Text)+"\n\n";
-            outPut.ScrollToEnd();
+            if (input.Text[0].ToString()=="/")
+            {
+                switch (input.Text)
+                {
+                    case "/help":
+                        outPut.Text += 
+                            "\nF1 上一条算式 \n/help 帮助 /clear 清除 \n";
+                        break;
+                    case "/clear":
+                        outPut.Text = "Cleared!";
+                        break;
+                }
+            }
+            else
+            {
+                cal();
+            }
         }
 
         private void input_TextChanged(object sender, TextChangedEventArgs e)
@@ -38,22 +70,52 @@ namespace calculator_wpf
             Class1 calcore = new Class1();
             try
             {
-                if (calcore.adCal(input.Text) == "Error")
-                {//#D32F2F
-                    inputTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C2185B"));
-                    //#F44336
-                    input.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E91E63"));
+                if(input.Text=="")
+                {
+                    inputTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#455A64"));
+                    input.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#607D8B"));
                 }
                 else
                 {
-                    //#1976D2
-                    //inputTitle.Background = 
-                    inputTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1976D2"));
-                    //#2196F3
-                    input.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2196F3"));
+                    if (input.Text[0].ToString() == "/")
+                    {
+                        inputTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00796B"));
+                        input.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#009688"));
+                    }
+                    else
+                    {
+                        if (calcore.adCal(input.Text) == "Error")
+                        {//#D32F2F
+                            inputTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C2185B"));
+                            //#F44336
+                            input.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E91E63"));
+                        }
+                        else
+                        {
+                            //#1976D2
+                            //inputTitle.Background = 
+                            inputTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1976D2"));
+                            //#2196F3
+                            input.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2196F3"));
+                        }
+                    }
                 }
             }
             catch { }
+        }
+
+        private void input_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.F1:
+                    input.Text = lastFormula;
+                    break;
+                case Key.Enter:
+                    calculate();
+                    input.Text = "";
+                    break;
+            }
         }
     }
 }
