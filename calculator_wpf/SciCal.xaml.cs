@@ -36,7 +36,7 @@ namespace calculator_wpf
         {
             if (input.Text != "")
             {
-                Class1 calcore = new Class1();
+                Core calcore = new Core();
                 lastFormula = input.Text;
                 outPut.Text += input.Text + "\nResult=" + calcore.adCal(input.Text) + "\n\n";
                 outPut.ScrollToEnd();
@@ -45,14 +45,14 @@ namespace calculator_wpf
 
         private void calculate()
         {
-            Class1 calcore = new Class1();
+            Core calcore = new Core();
             if (input.Text[0].ToString()=="/")
             {
                 switch (input.Text)
                 {
                     case "/help":
                         outPut.Text += 
-                            "\nF1 上一条算式 \n/help 帮助 /clear 清除 \n";
+                            "\nF1 上一条算式 \n/help 帮助 /clear 清除 \n\n";
                         break;
                     case "/clear":
                         outPut.Text = "Cleared!";
@@ -61,13 +61,21 @@ namespace calculator_wpf
             }
             else
             {
-                cal();
+                try
+                {
+                    cal();
+                }
+                catch
+                {
+                    outPut.Text += input.Text+"\n计算错误\n";
+                    outPut.ScrollToEnd();
+                }
             }
         }
 
         private void input_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Class1 calcore = new Class1();
+            Core calcore = new Core();
             try
             {
                 if(input.Text=="")

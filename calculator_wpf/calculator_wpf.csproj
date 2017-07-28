@@ -88,6 +88,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core.cs" />
     <Compile Include="SciCal.xaml.cs">
       <DependentUpon>SciCal.xaml</DependentUpon>
     </Compile>
