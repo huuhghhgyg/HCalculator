@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:calculator_wpf"
         xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         GlowBrush="{DynamicResource AccentColorBrush}"
         Title="Calculator" Height="460" Width="434.333" KeyDown="Window_KeyDown" ResizeMode="NoResize" MouseRightButtonDown="Window_MouseRightButtonDown">
@@ -14,7 +15,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="tabControl" Margin="0,0,-0.333,0">
+        <TabControl x:Name="tabControl" Margin="0,0,-0.333,0" Controls:TabControlHelper.IsUnderlined="True">
 
             <TabItem Header="计算" BorderBrush="#FF41B1E1">
                 <Grid Background="White" Margin="0">
@@ -58,7 +59,7 @@
                             <Grid Margin="160,0,10,-1" Background="#FF64C888">
                                 <Button x:Name="xxx" Style="{StaticResource MaterialDesignFlatButton}" Content="^" Margin="0,0,0,175.333" Height="56" VerticalAlignment="Bottom" FontSize="40" BorderBrush="#FFDDDDDD" Click="nn_Click" HorizontalAlignment="Left" Width="80" Background="#FF64C888" Foreground="Black"/>
                                 <Label x:Name="label3" Content="科学计算器" HorizontalAlignment="Left" Margin="39,114,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                                <Button x:Name="science" Content="Go" HorizontalAlignment="Left" Margin="48,149,0,0" VerticalAlignment="Top" Width="75" Background="#FF009688" BorderBrush="#FF009688" Click="science_Click"/>
+                                <Button x:Name="science" Content="Go" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Margin="48,149,0,0" VerticalAlignment="Top" Width="75" Background="White" BorderBrush="#FF009688" Click="science_Click"/>
                             </Grid>
                         </Grid>
                     </Grid>

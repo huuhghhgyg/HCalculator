@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using CalCore;
 using MahApps.Metro.Controls;
+using System;
 
 namespace calculator_wpf
 {
@@ -52,10 +44,13 @@ namespace calculator_wpf
                 {
                     case "/help":
                         outPut.Text += 
-                            "\nF1 上一条算式 \n/help 帮助 /clear 清除 \n\n";
+                            "\nF1 上一条算式 \n/help 帮助 /clear 清除 \n/exit 退出 \n\n";
                         break;
                     case "/clear":
                         outPut.Text = "Cleared!";
+                        break;
+                    case "/exit":
+                        Environment.Exit(0);
                         break;
                 }
             }
